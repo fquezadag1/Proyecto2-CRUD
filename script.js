@@ -25,3 +25,41 @@ function ValidarInputs(){
 
     return true;
 }
+
+function Mostrar(){
+
+    let lista;
+
+    if (localStorage.getItem('lista') == null) {
+        lista = [];
+    }else{
+        lista = JSON.parse(localStorage.getItem("lista"));
+    }
+
+    let html = "";
+
+    lista.forEach(function(element, index){
+        html += "<tr>";
+        html += "<td>" + element.nombre + "</td>";
+        html += "<td>" + element.email + "</td>";
+        html += "<td>" + element.contacto + "</td>";
+        html += '<td><button onclick="Borrar('+ index +')" class="btn btn-danger">Borrar</button> <button onclick="Actualizar('+ index +')" class="btn btn-info">Editar Registro</button></td>';
+        html += "</tr>";
+    });
+
+    document.querySelector('#tabla tbody').innerHTML = html;
+}
+
+document.onload = Mostrar();
+
+function Agregar(){
+
+}
+
+function Borrar(){
+
+}
+
+function Actualizar(){
+    
+}
