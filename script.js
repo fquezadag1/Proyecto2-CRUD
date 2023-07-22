@@ -54,9 +54,53 @@ document.onload = Mostrar();
 
 function Agregar(){
 
+    if (ValidarInputs() == true) {
+
+        let nombre = document.getElementById('input-nombre').value;
+        let email = document.getElementById('input-email').value;
+        let contacto = document.getElementById('input-contacto').value;
+
+        let lista;
+
+        if (localStorage.getItem('lista') == null) {
+
+            lista = [];
+            
+        }else{
+
+            lista = JSON.parse(localStorage.getItem("lista"));
+        }
+
+        lista.push({
+            nombre: nombre,
+            email: email,
+            contacto: contacto,
+        });
+
+        localStorage.setItem('lista', JSON.stringify(lista));
+
+        Mostrar();
+
+        document.getElementById('input-nombre').value = "";
+        document.getElementById('input-email').value = "";
+        document.getElementById('input-contacto').value = "";
+    }
 }
 
 function Borrar(){
+
+    let lista;
+
+    if (localStorage.getItem('lista') == null) {
+        lista = [];
+
+    }else{
+        lista = JSON.parse(localStorage.getItem("lista"));
+    }
+
+    lista.splice(index, 1);
+    localStorage.setItem('lista', JSON.stringify(lista));
+    Mostrar();
 
 }
 
