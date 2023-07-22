@@ -106,4 +106,36 @@ function Borrar(){
 
 function Actualizar(){
     
+    document.getElementById("btnAdd").disabled = true;
+    document.getElementById("btnUpdate").disabled = false;
+
+    let lista;
+    if (localStorage.getItem('lista') == null) {
+        lista = [];
+    }else{
+        lista = JSON.parse(localStorage.getItem("lista"));
+    }
+
+    document.getElementById('input-nombre').value = lista[index].nombre;
+    document.getElementById('input-email').value = lista[index].email;
+    document.getElementById('input-contacto').value = lista[index].contacto;
+
+    document.querySelector("#btnUpdate").onclick = function(){
+
+        if (ValidarInputs() == true) {
+            lista[index].nombre = document.getElementById('input-nombre').value;
+            lista[index].email = document.getElementById('input-email').value;
+            lista[index].contacto = document.getElementById('input-contacto').value;
+
+            localStorage.setItem('lista', JSON.stringify(lista));
+            Mostrar();
+
+            document.getElementById('input-nombre').value = "";
+            document.getElementById('input-email').value = "";
+            document.getElementById('input-contacto').value = "";
+
+            document.getElementById("btnAdd").disabled = false;
+            document.getElementById("btnUpdate").disabled = true;
+        }
+    };
 }
