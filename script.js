@@ -87,7 +87,7 @@ function Agregar(){
     }
 }
 
-function Borrar(){
+function Borrar(index){
 
     let lista;
 
@@ -104,7 +104,7 @@ function Borrar(){
 
 }
 
-function Actualizar(){
+function Actualizar(index){
     
     document.getElementById("btnAdd").disabled = true;
     document.getElementById("btnUpdate").disabled = false;
